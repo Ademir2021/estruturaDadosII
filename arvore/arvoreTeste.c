@@ -32,9 +32,9 @@ void menuOpcoes(){
 
 
 
-void preOrdem(NoArv *raiz){ // 50 25 30 100
-    if(raiz){
-        printf("%d ", raiz->valor);
+void preOrdem(NoArv *raiz){
+    if(raiz != NULL){
+        printf("%d - ", raiz->valor);
         preOrdem(raiz->esquerda);
         preOrdem(raiz->direita);
     }
@@ -58,12 +58,14 @@ int main(){
             raiz = inserir(raiz, valor);
             break;
         case 2:
+            system("clear");
             printf("\n\tImpressao Pré-Ordem:\n\t");
             preOrdem(raiz);
             printf("\n");
             break;
         default:
             if(opcao != 0);
+                system("clear");
                 printf("\n\tOpcao invalida!!!\n");
         }
 

@@ -25,16 +25,8 @@ int pai, no;
 void arvore_insere(int pai, int dado, int lado);
 int arvore_procura(int dado);
 void menu_mostrar(void);
-//void preOrdem(void); //Percurso Pré-Ordem
+void preOrdem(struct str_no* raiz); //Percurso Pré-Ordem
 
-
-void preOrdem(struct str_no* raiz){
-    if (raiz != 0){
-        printf("%i \t", raiz->dado); //visita o nó raiz
-        preOrdem(raiz->direita);
-        // preOrdem(raiz->direita);
-    }
-}
 
 /* Função Principal */
 int main(void){
@@ -136,6 +128,11 @@ void menu_mostrar(void){
     printf("\n0 - Sair...");
 }
 
-//Teste para imprimir PŕeOrdem
-
-//
+//Percurso Pré-Ordem
+void preOrdem(struct str_no* raiz){
+    if (raiz != 0){
+        printf("%i \t", raiz->dado); //visita o nó raiz
+        preOrdem(raiz->esquerda);
+        //preOrdem(raiz->direita);
+    }
+}
