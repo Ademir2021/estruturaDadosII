@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include<locale.h>
+
 //Constantes
 #define tamanho 10
 
@@ -34,7 +35,6 @@ int heapSort(int vec[], int tam);
 //Função principal
 int main(){
     setlocale(LC_ALL, "Portuguese");
-     int qtd=0;
     srand(time(NULL));
     do {
         system("clear");
@@ -73,7 +73,7 @@ int main(){
             qtd = quickSort(ordenado, 0, tamanho-1, qtd); // 6
             break;
             case 10:
-            qtd = heapShort(ordenado, tamanho);  // 7
+            qtd  = heapSort(ordenado, tamanho);  // 7
             break;
             default:
             printf("Digite um número válido");
@@ -141,7 +141,7 @@ void lista_mostrar_ordenado(void){
 
 //Aplica o método bubbleSort
 int bubbleSort(int vec[]){
-    //int qtd;
+    int qtd=0;
     int i, j, tmp;
     qtd = 0;
     for(i = 0; i < tamanho -1; i++){
@@ -164,7 +164,8 @@ void troca(int* a, int* b){
 
 //Aplica o modo selectSort
 int selectionSort(int vec[], int tam){
-    int i, j, min, qtd=0;
+    int qtd=0;
+    int i, j, min;
     for (i = 0; i < (tam -1); i++)
     {
         min = i;
@@ -183,7 +184,8 @@ int selectionSort(int vec[], int tam){
 
 //Aplicando o InsertionSort
 int insertionSort(int vec[], int tam){
-    int i, j, qtd=0;
+    int i, j;
+    int qtd = 0;
     for (i = 1; i < tam; i++){
         j = i;
         while((vec[j] < vec[j -1]) && (j!=0)){
@@ -197,7 +199,8 @@ int insertionSort(int vec[], int tam){
 
 //Aplica o shellSort
 int shellSort(int vec[], int tam){
-    int i, j, valor, qtd=0;
+    int i, j, valor;
+    int qtd = 0;
     int gap = 1;
     do{
         gap = 3*gap+1;
@@ -221,7 +224,6 @@ int shellSort(int vec[], int tam){
 //Aplica o mergeSort
 int mergeSort(int vec[], int tam, int qtd){
     int meio;
-
     if(tam > 1){
         meio = tam / 2;
         qtd = mergeSort(vec, meio, qtd);
@@ -304,8 +306,8 @@ int particiona(int vec[], int left, int right){
 
 //Garante as propriedades de heap a um nó
 int heapifica(int vec[], int tam, int i){
-    int e, d, maior, qtd;
-    qtd = 1;
+    int e, d, maior;
+    int qtd = 1;
     e = 2*i+1;
     d = 2*i+2;
     if(e<tam && vec[e] > vec[i]){
@@ -319,14 +321,14 @@ int heapifica(int vec[], int tam, int i){
     }
     if (maior != i){
         troca(&vec[i], &vec[maior]);
-        qtd += heapifica(vec, tam, i);
+        qtd += heapifica(vec, tam, maior);
     }
     return qtd;
 }
 //Transforma o vetor em um heap
 int constroiHeap(int vec[], int tam){
-    int i, qtd;
-    qtd=0;
+    int i;
+    int qtd=0;
     for(i=tam/2; i>=0; i--){
         qtd += heapifica(vec, tam, i);
     }
@@ -334,8 +336,8 @@ int constroiHeap(int vec[], int tam){
 }
 //Ordena na estrutura heap
 int heapSort(int vec[], int tam){
-    int n, i, qtd;
-    qtd = 0;
+    int n, i;
+    int qtd = 0;
     qtd += constroiHeap(vec, tam);
     n = tam;
     for(i=tam-1; i>0; i--){

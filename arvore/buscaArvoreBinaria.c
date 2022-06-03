@@ -1,18 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<locale.h>
+
 #define TAM 10
+    
+    int vec[TAM]={3,1,8,7,20,21,31,40,30,0};
 
-int vec[TAM]={10,20,30,40,50,60,70,80,90,101};
-int arg;
-int tam=10;
-
-int buscaArvoreBinaria(int vec[], int arg, int tam){
+int buscaArvoreBinaria(int vec[],int  arg,int  tam){
 int no, achou, fim;
 fim = 0;
 no = 0;
 achou = -1;
-while((achou == -1) && (fim <= tam)){
+while((achou == -1) && (fim <= TAM)){
     if(arg == vec[no]){
         achou = no;
     }
@@ -26,21 +25,9 @@ while((achou == -1) && (fim <= tam)){
 }
 return(achou);
 }
-
 int main(void){
 
-printf("Digite um numero inteiro para buscar: ");
-scanf("%d", &arg);
+    //Imprementar
 
-for( int i =0; i<=tam; i++){
-int buscaArvoreBinaria(int vec[], int arg, int tam);
-}
-if(arg <= 10){
-printf("\nNumero %d foi encontrado no vetor\n\n", vec[arg]);
-}else{
-    printf("\nNumero %d não foi encontrado  no vetor\n\n", vec[arg]);
-}
-    getchar();
     return 0;
 }
-
